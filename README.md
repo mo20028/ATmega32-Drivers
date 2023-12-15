@@ -1,4 +1,4 @@
-# Embedded System Drivers for ATmega32
+# ATmega32 Drivers
 
 ## Overview
 
@@ -7,7 +7,8 @@ This repository comprises a comprehensive collection of drivers tailored for var
 ## Features
 
 - **Supported Peripherals:**
-  - List of peripherals (e.g., GPIO, UART, SPI, I2C, ADC, etc.) with brief descriptions.
+  - MCAL Drivers (e.g., GPIO, UART, SPI, I2C, ADC, etc.).
+  - HAl  Drivers (e.g., LED , SSD , DC Motor , Stepper Motor, etc.).
 
 - **Easy Integration:**
   - Concise explanations on how to integrate and use the drivers within your ATmega32 projects.
