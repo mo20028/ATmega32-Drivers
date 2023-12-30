@@ -106,23 +106,7 @@ u8 	 UART_u8TX(u8 copy_u8data)
 
 	return local_error;
 }
-u8 Uart_u8recive(u8 *copy_pvRecive_Data)
-{
-	u32 local_counter=0;
-	u8 local_error=OK;
 
-	while((GET_BIT(UCSRA,UCSRA_RXC)==0)&&(local_counter!=Uart_u32Time_out))
-	{
-		local_counter++;
-	}
-	if(local_counter==Uart_u32Time_out){
-		local_error=NOK;
-	}
-	else{
-		*copy_pvRecive_Data=UDR;
-	}
-	return local_error;
-}
 u8 UART_u8SendString(const char *copy_string){
 	u8 local_error=OK;
 	while(*copy_string!='\0')
@@ -152,19 +136,10 @@ u8 Uart_u8SendBuffer(u8* copy_u8pBuffer,u8 copy_u8_bufferLength)
 	return local_error;
 
 }
-u8 UART_voidRecivestring( u8 *copy_string,u8 copy_u8Size)
-{
-	u8 local_iterator;
-	u8 local_error=OK;
-	for(local_iterator=0;local_iterator<copy_u8Size;local_iterator++){
 
-		local_error=Uart_u8recive(copy_string);
-		copy_string++;
-	}
-	return local_error;
-}
 u8 Uart_u8Send_Asyn(u8 copy_u8data){
 	u8 local_errorstate=OK;
+	// check Busy flag
 	if(BUSY_flag==idle){
 		BUSY_flag=busy;
 		Uart_Send_flag=Send_Singal;
@@ -183,6 +158,7 @@ u8 Uart_u8SendStr_Asyn(char *copy_string, void(*copy_pvNotif)(void))
 	u8 local_errorstate=OK;
 	if(copy_string!=NULL)
 	{
+		// check Busy flag
 		if(BUSY_flag==idle){
 			BUSY_flag=busy;
 			Uart_Send_flag=Send_String;
@@ -202,16 +178,38 @@ u8 Uart_u8SendStr_Asyn(char *copy_string, void(*copy_pvNotif)(void))
 
 	return local_errorstate;
 }
+/***********************************************************************
+ ********************** Receiving Functions ****************************
+ ************************************************************************/
+u8 Uart_u8recive(u8 *copy_pvRecive_Data)
+{
+	u32 local_counter=0;
+	u8 local_error=OK;
+
+	while((GET_BIT(UCSRA,UCSRA_RXC)==0)&&(local_counter!=Uart_u32Time_out))
+	{
+		local_counter++;
+	}
+	if(local_counter==Uart_u32Time_out){
+		local_error=NOK;
+	}
+	else{
+		*copy_pvRecive_Data=UDR;
+	}
+	return local_error;
+}
 u8 Uart_u8recive_Asyn(u8* copy_pvdata)
 {
 	u8 local_errorstat=OK;
-
-
+	// check Busy flag
 	if(BUSY_flag==idle)
 	{
 		BUSY_flag=busy;
+		// define that you receive single char
 		Uart_Recive_flag=Recive_Singal;
+		// Inti copy_pvdata in global address
 		Uart_pvRecivedata=copy_pvdata;
+		// enable receive interrupt
 		SET_BIT(UCSRB,UCSRB_RXCIE);
 	}
 	else
@@ -223,6 +221,18 @@ u8 Uart_u8recive_Asyn(u8* copy_pvdata)
 
 	return local_errorstat;
 }
+u8 UART_voidRecivestring( u8 *copy_string,u8 copy_u8Size)
+{
+	u8 local_iterator;
+	u8 local_error=OK;
+	for(local_iterator=0;local_iterator<copy_u8Size;local_iterator++){
+
+		local_error=Uart_u8recive(copy_string);
+		copy_string++;
+	}
+	return local_error;
+}
+
 u8 Uart_u8recive_StringA(char *copy_string,u8 copy_u8size,void(*copy_Pvnotif)(void))
 {
 	u8 local_errorstate=OK;
@@ -232,7 +242,7 @@ u8 Uart_u8recive_StringA(char *copy_string,u8 copy_u8size,void(*copy_Pvnotif)(vo
 		BUSY_flag=busy;
 
 		Uart_Recive_flag=Recive_String;
-		/* intilization argument globally*/
+		/* inti argument globally*/
 		Uart_string=copy_string;
 		Size_Recive_String=copy_u8size;
 		Uart_pvfun=copy_Pvnotif;
@@ -292,8 +302,12 @@ void __vector_13 (void)
 
 	if(Uart_Recive_flag==Recive_Singal){
 		BUSY_flag=idle;
+
 		*Uart_pvRecivedata=UDR;
+		// disable receive interrupt
 		CLR_BIT(UCSRB,UCSRB_RXCIE);
+		// call notification function
+		//Uart_pvfun();
 	}
 	else if(Uart_Recive_flag==Recive_String)
 	{
