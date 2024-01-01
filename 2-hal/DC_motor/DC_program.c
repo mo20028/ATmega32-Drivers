@@ -23,18 +23,18 @@ static void unclockwise();
 
 static void clockwise()
 {
-	setbitvalue(DC_motor_port, DC_MOTOR_pin1, DIO_u8PIN_LOW);
-	setbitvalue(DC_motor_port, DC_MOTOR_pin0, DIO_u8PIN_HIGH);
+	DIO_u8SetPin(DC_motor_port, DC_MOTOR_pin1, DIO_u8PIN_LOW);
+	DIO_u8SetPin(DC_motor_port, DC_MOTOR_pin0, DIO_u8PIN_HIGH);
 }
 static void unclockwise()
 {
-	setbitvalue(DC_motor_port, DC_MOTOR_pin0, DIO_u8PIN_LOW);
-	setbitvalue(DC_motor_port, DC_MOTOR_pin1, DIO_u8PIN_HIGH);
+	DIO_u8SetPin(DC_motor_port, DC_MOTOR_pin0, DIO_u8PIN_LOW);
+	DIO_u8SetPin(DC_motor_port, DC_MOTOR_pin1, DIO_u8PIN_HIGH);
 }
 void stop_DC()
 {
-	setbitvalue(DC_motor_port, DC_MOTOR_pin0, DIO_u8PIN_LOW);
-	setbitvalue(DC_motor_port, DC_MOTOR_pin1, DIO_u8PIN_LOW);
+	DIO_u8SetPin(DC_motor_port, DC_MOTOR_pin0, DIO_u8PIN_LOW);
+	DIO_u8SetPin(DC_motor_port, DC_MOTOR_pin1, DIO_u8PIN_LOW);
 }
 u8   DC_u8dircotrol(u8 copy_u8direction)
 {

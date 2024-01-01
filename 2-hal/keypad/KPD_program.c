@@ -6,9 +6,10 @@
 /************************************************************************/
 /************************************************************************/
 
-#include "STD_types.h"
+#include "../../libr/STD_types.h"
+#include "../../libr/BIT_math.h"
 
-#include  "DIO_interface.h"
+#include  "../../1-mcal/1-DIO/DIO_interface.h"
 
 #include "KPD_config.h"
 #include  "KPD_interface.h"
@@ -28,13 +29,12 @@ u8 KPD_u8GetPressKey(void)
 	for(Local_u8Column=0;Local_u8Column<Column_num;Local_u8Column++)
 	{
 		/* active current column */
-		setbitvalue(KPD_PORT, Local_u8KPDColumnarr[Local_u8Column]	, DIO_u8PIN_LOW	);
+		DIO_u8SetPin(KPD_PORT, Local_u8KPDColumnarr[Local_u8Column]	, DIO_u8PIN_LOW	);
 
 		for(Local_u8Row=0;Local_u8Row<Row_num;Local_u8Row++)
 		{
 			/* read the current row*/
-			getbit(KPD_PORT, Local_u8KPDRowarr[Local_u8Row], &Local_u8Pin_State);
-
+			DIO_u8GetPin(KPD_PORT, Local_u8KPDRowarr[Local_u8Row], &Local_u8Pin_State);
 			/*check the swichs pressed */
 			if(DIO_u8PIN_LOW==Local_u8Pin_State)
 			{
@@ -42,7 +42,7 @@ u8 KPD_u8GetPressKey(void)
 				/* polling (bus waiting) utile the key is relesed */
 				while(DIO_u8PIN_LOW==Local_u8Pin_State)
 				{
-					getbit(KPD_PORT, Local_u8KPDRowarr[Local_u8Row], &Local_u8Pin_State);
+					DIO_u8GetPin(KPD_PORT, Local_u8KPDRowarr[Local_u8Row], &Local_u8Pin_State);
 
 				}
 				return Local_u8PressKey;
@@ -50,7 +50,7 @@ u8 KPD_u8GetPressKey(void)
 
 		}
 		/* deactive current column */
-		setbitvalue(KPD_PORT, Local_u8KPDColumnarr[Local_u8Column]	, DIO_u8PIN_HIGH	);
+		DIO_u8SetPin(KPD_PORT, Local_u8KPDColumnarr[Local_u8Column]	, DIO_u8PIN_HIGH	);
 
 	}
 
