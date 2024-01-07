@@ -7,8 +7,9 @@
 /************************************************************************/
 /************************************************************************/
 
-#include "STD_types.h"
-#include "BIT_math.h"
+#include "../../libr/STD_types.h"
+#include "../../libr/BIT_math.h"
+
 
 #include "TWI_config.h"
 #include "TWI_interface.h"

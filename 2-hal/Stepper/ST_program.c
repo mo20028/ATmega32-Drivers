@@ -8,15 +8,15 @@
 /************************************************************************/
 
 
-#include  "STD_types.h"
-#include  "BIT_math.h"
+#include "../../libr/STD_types.h"
+#include "../../libr/BIT_math.h"
 
 #include  "ST_config.h"
 #include  "ST_interface.h"
 #include  "ST_private.h"
 
-#include  "DIO_interface.h"
-#include  "PORT_interface.h"
+#include "../../1-mcal/1-DIO/DIO_interface.h"
+
 
 #include  "util/delay.h"
 
@@ -30,25 +30,26 @@ u8 ST_voidclockwise(u8 copy_u8size,u16 copy_u8degree)
 		u8 iteritor;
 		for(iteritor=0;iteritor<number_of_steps;iteritor++)
 		{
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3, DIO_u8PIN_HIGH);
 			_delay_ms(2);
 
 		}
@@ -59,45 +60,45 @@ u8 ST_voidclockwise(u8 copy_u8size,u16 copy_u8degree)
 		u8 iteritor;
 		for(iteritor=0;iteritor<number_of_steps;iteritor++)
 		{
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
 		}
 	}
@@ -118,25 +119,25 @@ u8 ST_voidunclockwise(u8 copy_u8size,u16 copy_u8degree)
 		u8 iteritor;
 		for(iteritor=0;iteritor<number_of_steps;iteritor++)
 		{
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
 		}
 	}
@@ -146,45 +147,45 @@ u8 ST_voidunclockwise(u8 copy_u8size,u16 copy_u8degree)
 		u8 iteritor;
 		for(iteritor=0;iteritor<number_of_steps;iteritor++)
 		{
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
 			_delay_ms(2);
-			setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-			setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+			DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_HIGH);
 			_delay_ms(2);
 		}
 	}
@@ -192,9 +193,9 @@ u8 ST_voidunclockwise(u8 copy_u8size,u16 copy_u8degree)
 }
 void stop()
 {
-	setbitvalue(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
-	setbitvalue(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
-	setbitvalue(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
-	setbitvalue(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
+	DIO_u8SetPin(STEPPER_PORT, STEPPER_pin0, DIO_u8PIN_LOW);
+	DIO_u8SetPin(STEPPER_PORT, STEPPER_pin1,  DIO_u8PIN_LOW);
+	DIO_u8SetPin(STEPPER_PORT, STEPPER_pin2,  DIO_u8PIN_LOW);
+	DIO_u8SetPin(STEPPER_PORT, STEPPER_pin3,  DIO_u8PIN_LOW);
 
 }

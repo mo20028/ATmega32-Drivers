@@ -4,8 +4,9 @@
 /************************************************************************/
 /************************************************************************/
 
-#include "STD_types.h"
-#include "BIT_math.h"
+#include "../../libr/STD_types.h"
+#include "../../libr/BIT_math.h"
+
 
 #include "Spi_config.h"
 #include "Spi_interface.h"

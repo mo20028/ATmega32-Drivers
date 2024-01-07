@@ -7,14 +7,15 @@
 /************************************************************************/
 /************************************************************************/
 
-#include "BIT_math.h"
-#include "STD_types.h"
+#include "../../libr/STD_types.h"
+#include "../../libr/BIT_math.h"
+
 
 #include "Ultra_config.h"
 #include "Ultra_interface.h"
 #include "Ultra_private.h"
-#include "Timer_interface.h"
-#include "DIO_interface.h"
+#include "../../1-mcal/6-TIMER/Timer_interface.h"
+#include "../../1-mcal/1-DIO/DIO_interface.h"
 #include <util/delay.h>
 
 static u16 Ultra_Reading;
@@ -50,9 +51,9 @@ void edge_pro(void)
 }
 void Ultra_Trigger(void)
 {
-	setbitvalue(ULTRA_PORT, ULTRA_TRIGGAR, DIO_u8PIN_HIGH);
+	DIO_u8SetPin(ULTRA_PORT, ULTRA_TRIGGAR, DIO_u8PIN_HIGH);
 	_delay_ms(11);
-	setbitvalue(ULTRA_PORT, ULTRA_TRIGGAR, DIO_u8PIN_LOW);
+	DIO_u8SetPin(ULTRA_PORT, ULTRA_TRIGGAR, DIO_u8PIN_LOW);
 }
 u16 Ultra_u16Distance(void)
 {

@@ -7,8 +7,8 @@
 /************************************************************************/
 /************************************************************************/
 
-#include "STD_types.h"
-#include "BIT_math.h"
+#include "../../libr/STD_types.h"
+#include "../../libr/BIT_math.h"
 
 #include "EEPROM_config.h"
 #include "EEPROM_interface.h"
