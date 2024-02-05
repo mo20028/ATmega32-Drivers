@@ -289,6 +289,9 @@ void __vector_2 (void)
 	{
 		EXTI_pv_int[1]();
 	}
+	else{
+		/* DO nothing */
+	}
 }
 void __vector_3 (void) __attribute__((signal));
 void __vector_3 (void)
@@ -296,6 +299,9 @@ void __vector_3 (void)
 	if(EXTI_pv_int[2]!=NULL)
 	{
 		EXTI_pv_int[2]();
+	}
+	else{
+		/* DO nothing */
 	}
 }
 

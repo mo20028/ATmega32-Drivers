@@ -7,8 +7,8 @@
 /************************************************************************/
 /************************************************************************/
 
-#include "../../libr/STD_types.h"
-#include "../../libr/BIT_math.h"
+#include "STD_types.h"
+#include "BIT_math.h"
 
 
 #include "TWI_config.h"
@@ -153,14 +153,14 @@ TWI_error TWI_MasterReadData(u8 *copy_u8Data)
 {
 	TWI_error local_error=NO_error;
 	/*enable master to generate AC*/
-	//SET_BIT(TWCR,TWCR_TWEA);
+	SET_BIT(TWCR,TWCR_TWEA);
 	/*enable TWI*/
 	SET_BIT(TWCR,TWCR_TWEN);
 	/* clear interrupt flag of to start operation*/
 	SET_BIT(TWCR,TWCR_TWINT);
 	/* wait until the falg is rised*/
 	while((GET_BIT(TWCR,TWCR_TWINT))==0);
-	if((TWSR&0xf8)!=Master_RD_NAC)
+	if((TWSR&0xf8)!=Master_RD_AC)
 	{
 		local_error=Master_RD_Err;
 	}
@@ -184,5 +184,30 @@ void TWI_voidSendStopCondition(void)
 
 	TWCR=(1<<TWCR_TWINT)|(1<<TWCR_TWSTO)|(1<<TWCR_TWEN);
 
+
+}
+
+TWI_error TWI_MasterReadData_N(u8 *copy_u8Data)
+{
+	TWI_error local_error=NO_error;
+	/*Disable master to generate AC*/
+	CLR_BIT(TWCR,TWCR_TWEA);
+	/*enable TWI*/
+	SET_BIT(TWCR,TWCR_TWEN);
+	/* clear interrupt flag of to start operation*/
+	SET_BIT(TWCR,TWCR_TWINT);
+	/* wait until the falg is rised*/
+	while((GET_BIT(TWCR,TWCR_TWINT))==0);
+	if((TWSR&0xf8)!=Master_RD_NAC)
+	{
+		local_error=Master_RD_Err;
+	}
+	else{
+		/* Read the Recived data*/
+		*copy_u8Data=TWDR;
+	}
+
+
+	return local_error;
 
 }

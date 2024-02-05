@@ -29,6 +29,11 @@ TWI_error TWI_MasterReadData(u8 *copy_u8Data);
 
 void TWI_voidSendStopCondition(void);
 
+/*********************************************************/
+void i2c_start(void);
+void i2c__MasterTransmission(void);
+TWI_error TWI_MasterReadData_N(u8 *copy_u8Data);
+
 
 
 
