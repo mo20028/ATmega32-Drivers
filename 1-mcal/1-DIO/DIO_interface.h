@@ -43,29 +43,29 @@
 
 
 /***************************************************************************************
-/*	Function Name: DIO_u8SetPin(u8 copy_u8port,u8 copy_u8pin,u8 copy_u8value)		****
-/*	description	 : this function used to write value on any pin of dio pins			****
-/*	parameter	 : 1.Port	2.pin	3.Value(0 or 1)									****
-/*	return value : return error states												****
-/***************************************************************************************/
+*	Function Name: DIO_u8SetPin(u8 copy_u8port,u8 copy_u8pin,u8 copy_u8value)		****
+*	description	 : this function used to write value on any pin of dio pins			****
+*	parameter	 : 1.Port	2.pin	3.Value(0 or 1)									****
+*	return value : return error states												****
+***************************************************************************************/
 u8 DIO_u8SetPin(u8 copy_u8port,u8 copy_u8pin,u8 copy_u8value);
 
 
 /***************************************************************************************
-/*	Function Name: DIO_u8SetPort (u8 copy_u8port,u8 copy_u8value)					****
-/*	description	 : this function used to write value on any port of DIO Port		****
-/*	parameter	 : 1.Port	3.Value(0-255)											****
-/*	return value : return error states												****
-/***************************************************************************************/
+*	Function Name: DIO_u8SetPort (u8 copy_u8port,u8 copy_u8value)					****
+*	description	 : this function used to write value on any port of DIO Port		****
+*	parameter	 : 1.Port	3.Value(0-255)											****
+*	return value : return error states												****
+***************************************************************************************/
 u8 DIO_u8SetPort (u8 copy_u8port,u8 copy_u8value);
 
 
 /***************************************************************************************
-/*	Function Name: DIO_u8GetPin (u8 copy_port ,u8 copy_pin,u8* copy_value)			****
-/*	description	 : this function used to Read value on any port of DIO Port			****
-/*	parameter	 : 1.Port	2.pin	3.Pointer 										****
-/*	return value : return error states												****
-/***************************************************************************************/
+*	Function Name: DIO_u8GetPin (u8 copy_port ,u8 copy_pin,u8* copy_value)			****
+*	description	 : this function used to Read value on any port of DIO Port			****
+*	parameter	 : 1.Port	2.pin	3.Pointer 										****
+*	return value : return error states												****
+***************************************************************************************/
 u8 DIO_u8GetPin (u8 copy_port ,u8 copy_pin,u8* copy_value);
 
 

@@ -7,8 +7,8 @@
 /************************************************************************/
 /************************************************************************/
 
-#include "../../libr/STD_types.h"
-#include "../../libr/BIT_math.h"
+#include "STD_types.h"
+#include "BIT_math.h"
 
 #include  "Timer_config.h"
 #include  "Timer_interface.h"

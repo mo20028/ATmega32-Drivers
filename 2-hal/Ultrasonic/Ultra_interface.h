@@ -10,11 +10,18 @@
 #ifndef ULTRA_INTERFACE_H_
 #define ULTRA_INTERFACE_H_
 
+typedef struct
+{
+	u8 Ultra_n;
+	u8 trg_port;
+	u8 trg_pin;
+
+}Ultra_t;
+
+
 void Ultra_voidInti(void);
-void edge_pro(void);
-void Ultra_Trigger(void);
-u16 Ultra_u16Distance(void);
-void show_reading(void);
+u16 Ultra_u16Distance(Ultra_t *copy_ultra);
+
 
 
 
