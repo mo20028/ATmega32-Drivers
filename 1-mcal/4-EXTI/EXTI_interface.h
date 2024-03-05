@@ -31,8 +31,8 @@
 #define INT2		7
 
 #define INT0_ID 	0
-#define INT0_ID 	1
-#define INT0_ID 	2
+#define INT1_ID 	1
+#define INT2_ID 	2
 
 
 
