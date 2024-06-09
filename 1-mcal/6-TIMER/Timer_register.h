@@ -33,6 +33,8 @@
 #define TCCR1A_WGM10	0
 #define TCCR1A_WGM11	1
 
+#define TCCR1A_COM1B0	4
+#define TCCR1A_COM1B1	5
 #define TCCR1A_COM1A0	6
 #define TCCR1A_COM1A1	7
 
@@ -47,6 +49,7 @@
 
 #define ICR1			*((volatile u16*)0x46)
 #define OCR1A			*((volatile u16*)0x4a)
+#define OCR1B			*((volatile u16*)0x48)
 
 #define TCNT1			*((volatile u16*)0x4c)
 /******************************** Timer2 registers ********************************/
